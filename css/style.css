@@ -1,0 +1,210 @@
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	color: rgb(245, 245, 245);
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+.bigred{
+	font-size: 20px;
+	color: red;
+}
+
+.header {
+	position: fixed;      /*header siempre esta queto */
+	top:0;					/*esta pegada arriba*/
+	left: 0;
+	width: 100%;
+	z-index: 10; 			/*siempre esta encima de todos*/
+	background-color: #0a60b1;
+	 
+}
+
+.header__container { /*container para envolver el contenido*/
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	padding: 0 30px;
+	justify-content: space-between; /* logo y los items de menu a los extremos de pagina*/
+	align-items: center;
+	min-height: 70px; /*espesor minimal de header*/
+}
+
+.header__logo {
+	height: 40px;
+	width: 40px;
+	background-color: #ffffff;
+	border-radius: 50%;
+	position: relative;
+	
+	
+	
+
+}
+
+.menu__list >li {
+	position: relative; /*porque tiene su sublista*/
+	margin: 0 0 0 20px;
+}
+
+.menu__link{ 
+	color: #fff;
+	font-size: 18px;
+}
+
+.menu__sub-list {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #000;
+	padding: 15px;
+	min-width: 112px;
+}
+.menu__sub-list li{ 
+	margin: 0 0 10px 0; /*espacio exterior abajo de cada uno de sublista*/
+}
+.menu__sub-list li:last-child{
+	margin: 0; /*ultimo item de sublista borrar espacio externo*/
+}
+.menu__sub-link {
+	color: #b8adad;
+}
+.menu__link:hover {
+	text-decoration: underline;
+}
+.menu__sub-link:hover {
+	text-decoration: underline;
+}
+.page {
+	padding: 90px 0px 30px 0px;
+}
+
+.page__section {
+	padding: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.page__section_1 {
+	background-color: #7b7e80;
+}
+
+.page__title {
+	font-size: 40px;
+	margin: 0 0 20px 0;
+}
+
+.page__text {
+	font-size: 16px;
+	line-height: 150%;
+}
+
+.page__text p {
+	margin: 0 0 20px 0;
+}
+
+.page__section_2 {
+	background-color: #333a3f;
+}
+
+.page__sub-title {
+	font-size: 30px;
+	margin: 0 0 20px 0;
+}
+
+.page__section_3 {
+	background-color: #5d788a;
+}
+.menu__arrow {
+	display: none;
+}
+
+/*----------------------------------------------------*/
+body._pc .menu__list > li:hover .menu__sub-list {
+	    opacity: 1; /*visible*/
+		visibility: visible; /*para q  sea activo*/
+		transform: translate(0px,0px);/* regresa a su pocision*/
+		pointer-events: all;/*permite cualquer interactuacion con mouse*/
+}
+body._touch .menu__list > li { /*ubicacion de flechita*/
+	display: flex;
+	align-items: center;
+}
+body._touch .menu__link {/*????????????*/
+	flex: 1 1 auto;
+}
+body._touch .menu__arrow {
+	display: block;
+	width: 0;
+	height: 0;
+	margin: 0 0 0 5px;
+	transition: transform 0.3s ease 0s;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 10px solid #fff;
+
+}
+body._touch .menu__list > li._active .menu__sub-list { /*en touch screen interactuar con triangulito*/
+	opacity: 1; /*visible*/
+	visibility: visible; /*para q  sea activo*/
+	transform: translate(0px,0px);/* regresa a su pocision*/
+	pointer-events: all;/*permite cualquer interactuacion con mouse*/
+}
+body._touch .menu__list > li._active .menu__arrow {
+	transform: rotate(-540deg);
+}
+
+/*----------------------------------------------------*/
+@media (min-width: 767px) {
+	.menu__list {
+		display: flex;
+		align-items: center;
+	}
+	.menu__list >li { 
+		padding: 10px 0; /*espacio entre lista y sublista*/
+	}
+	.menu__sub-list {
+
+		transform: translate(0px,10%);/*bajar un 10% de su pocision*/
+		opacity: 0; /*invisible*/
+		visibility: hidden; /*para q no sea inactivo*/
+		transition: all 0.3s ease 0s; /*un poco de magia*/
+		pointer-events: none;/*prohibe cualquer interactuacion con mouse*/
+
+
+	}
+
+}
