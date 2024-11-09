@@ -26,6 +26,11 @@ html,body{
 	-webkit-text-size-adjust: 100%;
 	color: rgb(245, 245, 245);
 }
+
+body._lock {
+	overflow: hidden; /*congelar el scroll mientras menu esta abierto*/
+}
+
 input,button,textarea{font-family:inherit;}
 
 input::-ms-clear{display: none;}
@@ -249,6 +254,17 @@ body._touch .menu__list > li._active .menu__arrow {
 	.menu__icon span{
 		top: 50%;
 		transform: scale(1) translate(0px, -50%);
+	}
+	.menu__icon._active span {
+		transform: scale(0) translate(0px, -50%);
+	}
+	.menu__icon._active::before {
+		top: 50%;
+		transform: rotate(-45deg) translate(0px, -50%);
+	}
+	.menu__icon._active::after {
+		bottom: 50%;
+		transform: rotate(45deg) translate(0px, -50%);
 	}
 	.menu__body {
 		position: fixed;
